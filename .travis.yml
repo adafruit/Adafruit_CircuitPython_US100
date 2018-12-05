@@ -26,8 +26,6 @@ install:
 - pip install --force-reinstall pylint==1.9.2
 script:
 - pylint adafruit_us100.py
-- ([[ ! -d "examples" ]] || pylint --disable=missing-docstring,invalid-name,bad-whitespace
-  examples/*.py)
-- circuitpython-build-bundles --filename_prefix adafruit-circuitpython-us100 --library_location
-  .
+- ([[ ! -d "examples" ]] || pylint --disable=missing-docstring,invalid-name,bad-whitespace examples/*.py)
+- circuitpython-build-bundles --filename_prefix adafruit-circuitpython-us100 --library_location .
 - cd docs && sphinx-build -E -W -b html . _build/html && cd ..
