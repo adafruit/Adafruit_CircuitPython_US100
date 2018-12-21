@@ -9,8 +9,8 @@ Introduction
     :target: https://discord.gg/nBQh6qu
     :alt: Discord
 
-.. image:: https://travis-ci.org/adafruit/Adafruit_CircuitPython_US100.svg?branch=master
-    :target: https://travis-ci.org/adafruit/Adafruit_CircuitPython_US100
+.. image:: https://travis-ci.com/adafruit/Adafruit_CircuitPython_US100.svg?branch=master
+    :target: https://travis-ci.com/adafruit/Adafruit_CircuitPython_US100
     :alt: Build Status
 
 CircuitPython library for reading distance and temperature via US-100 ultra-sonic sensor
