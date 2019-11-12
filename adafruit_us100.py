@@ -37,10 +37,9 @@ Implementation Notes
   https://github.com/adafruit/circuitpython/releases
 """
 
-# imports
-
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_US100.git"
+
 
 class US100:
     """Control a US-100 ultrasonic range sensor."""
@@ -63,6 +62,9 @@ class US100:
         """
         self._uart.write(bytes([0x55]))
         data = self._uart.read(2)  # 2 bytes return for distance
+        if not data:
+            raise RuntimeError("Sensor not found. Check your wiring!")
+
         if len(data) != 2:
             raise RuntimeError("Did not receive distance response")
         dist = (data[1] + (data[0] << 8)) / 10
@@ -73,6 +75,9 @@ class US100:
         """Return the on-chip temperature, in Celsius"""
         self._uart.write(bytes([0x50]))
         data = self._uart.read(1)  # 1 byte return for temp
+        if not data:
+            raise RuntimeError("Sensor not found. Check your wiring!")
+
         if len(data) != 1:
             raise RuntimeError("Did not receive temperature response")
         temp = data[0] - 45
