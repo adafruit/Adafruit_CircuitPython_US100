@@ -1,13 +1,14 @@
 import time
-import adafruit_us100
 
 # For use with a microcontroller:
 import board
 import busio
+import adafruit_us100
 uart = busio.UART(board.TX, board.RX, baudrate=9600)
 
 # For use with Raspberry Pi/Linux:
 # import serial
+# import adafruit_us100
 # uart = serial.Serial("/dev/ttyS0", baudrate=9600, timeout=1)
 
 us100 = adafruit_us100.US100(uart)
