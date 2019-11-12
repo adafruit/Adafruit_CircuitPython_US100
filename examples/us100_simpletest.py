@@ -1,14 +1,20 @@
 import time
-import board
-import busio
 import adafruit_us100
 
+# For use with a microcontroller:
+import board
+import busio
 uart = busio.UART(board.TX, board.RX, baudrate=9600)
-# Create a US-100 module instance.
+
+# For use with Raspberry Pi/Linux:
+# import serial
+# uart = serial.Serial("/dev/ttyS0", baudrate=9600, timeout=1)
+
 us100 = adafruit_us100.US100(uart)
 
 while True:
     print("-----")
     print("Temperature: ", us100.temperature)
+    time.sleep(0.5)
     print("Distance: ", us100.distance)
     time.sleep(0.5)
