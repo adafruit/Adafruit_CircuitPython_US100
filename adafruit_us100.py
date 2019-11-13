@@ -66,6 +66,7 @@ class US100:
         """
         for _ in range(2):  # Attempt to read twice.
             self._uart.write(bytes([0x55]))
+            time.sleep(0.1)
             data = self._uart.read(2)  # 2 byte return for distance.
             if data:  # If there is a reading, exit the loop.
                 break
@@ -87,6 +88,7 @@ class US100:
         """Return the on-chip temperature, in Celsius"""
         for _ in range(2):  # Attempt to read twice.
             self._uart.write(bytes([0x50]))
+            time.sleep(0.1)
             data = self._uart.read(1)  # 1 byte return for temp
             if data:  # If there is a reading, exit the loop.
                 break
