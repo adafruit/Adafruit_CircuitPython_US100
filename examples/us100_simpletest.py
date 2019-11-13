@@ -6,6 +6,11 @@ import busio
 import adafruit_us100
 uart = busio.UART(board.TX, board.RX, baudrate=9600)
 
+# For use with USB-to-serial cable:
+# import serial
+# import adafruit_us100
+# uart = serial.Serial("/dev/ttyUSB0", baudrate=9600, timeout=1)
+
 # For use with Raspberry Pi/Linux:
 # import serial
 # import adafruit_us100
