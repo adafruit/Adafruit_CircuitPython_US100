@@ -20,7 +20,7 @@ Implementation Notes
   https://github.com/adafruit/circuitpython/releases
 """
 
-__version__ = "0.0.0-auto.0"
+__version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_US100.git"
 
 import time
