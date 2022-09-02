@@ -51,7 +51,7 @@ class US100:
         for the sensor to handle. In my experience, the sensor can not detect
         objects over 460 cm away.
         :return: Distance in centimeters.
-        :rtype: float
+        :rtype: float or None
         """
         for _ in range(2):  # Attempt to read twice.
             self._uart.write(bytes([0x55]))
