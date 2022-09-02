@@ -26,7 +26,7 @@ __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_US100.git"
 import time
 
 try:
-    from typing import Union
+    from typing import Optional
     from busio import UART
 except ImportError:
     pass
@@ -35,11 +35,11 @@ except ImportError:
 class US100:
     """Control a US-100 ultrasonic range sensor."""
 
-    def __init__(self, uart: UART):
+    def __init__(self, uart: UART) -> None:
         self._uart = uart
 
     @property
-    def distance(self) -> float:
+    def distance(self) -> Optional[float]:
         """Return the distance measured by the sensor in cm.
         This is the function that will be called most often in user code.
         If no signal is received, return ``None``. This can happen when the
@@ -73,7 +73,7 @@ class US100:
         return dist
 
     @property
-    def temperature(self) -> Union[None, int]:
+    def temperature(self) -> Optional[int]:
         """Return the on-chip temperature, in Celsius"""
         for _ in range(2):  # Attempt to read twice.
             self._uart.write(bytes([0x50]))
