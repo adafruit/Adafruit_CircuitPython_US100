@@ -37,6 +37,10 @@ class US100:
 
     def __init__(self, uart: UART) -> None:
         self._uart = uart
+        # Some chips, such as ESP32-S3, may have junk input bytes immediately after UART creation.
+        # Wait enough time for those to appear, and then clear the buffer.
+        time.sleep(0.1)
+        uart.reset_input_buffer()
 
     @property
     def distance(self) -> Optional[float]:
@@ -52,6 +56,9 @@ class US100:
         objects over 460 cm away.
         :return: Distance in centimeters.
         :rtype: float or None
+
+        May block for up to 400 msecs while attempting a read.
+        Will always block for at least 100 msecs.
         """
         for _ in range(2):  # Attempt to read twice.
             self._uart.write(bytes([0x55]))
@@ -74,7 +81,11 @@ class US100:
 
     @property
     def temperature(self) -> Optional[int]:
-        """Return the on-chip temperature, in Celsius"""
+        """Return the on-chip temperature, in Celsius
+
+        May block for up to 200 msecs while attempting a read.
+        Will always block for at least 100 msecs.
+        """
         for _ in range(2):  # Attempt to read twice.
             self._uart.write(bytes([0x50]))
             time.sleep(0.1)
