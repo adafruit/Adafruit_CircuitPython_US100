@@ -24,7 +24,7 @@ us100 = adafruit_us100.US100(uart)
 
 while True:
     print("-----")
-    print("Temperature: ", us100.temperature)
+    print(f"Temperature: {us100.temperature}°C")
     time.sleep(0.5)
-    print("Distance: ", us100.distance)
+    print(f"Distance: {us100.distance} cm")
     time.sleep(0.5)
