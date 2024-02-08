@@ -71,8 +71,8 @@ Usage Example
 
 	while True:
 	    print("-----")
-	    print(f"Temperature: {us100.temperature} cm")
-	    print(f"Distance: {us100.distance}°C")
+	    print(f"Temperature: {us100.temperature}°C")
+	    print(f"Distance: {us100.distance} cm")
 	    time.sleep(0.5)
 
 
