@@ -6,6 +6,7 @@ import time
 # For use with a microcontroller:
 import board
 import busio
+
 import adafruit_us100
 
 uart = busio.UART(board.TX, board.RX, baudrate=9600)
